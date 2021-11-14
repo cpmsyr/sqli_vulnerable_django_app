@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Part Search</title>
+</head>
+<body>
+<style>
+    table {
+  border-spacing: 30px;}
+</style>
+<div>
+<h2>Parts Search</h2>
+</br>
+    </br>
+    <form action="/parts/" method="post">{% csrf_token %}
+        <label>Part Name:</label>
+    <input type="text" id="searchText" name="searchText" size="100"/>
+        <input type="submit" value="Submit">
+        </form>
+</div>
+<table>
+<thead>
+<tr>
+    <td><b>Part ID</b></td>
+    <td><b>Description</b></td>
+    <td><b>Name</b></td>
+    <td><b>Price</b></td>
+    <td><b>Frequently Purchased</b></td>
+</tr>
+</thead>
+<tbody>
+{% if data %}
+{% for i in data %}
+    <tr>
+       <td>{{ i.part_id }}</td>
+        <td> {{ i.description }}</td>
+        <td>{{i.name}}</td>
+      <td>{{ i.price }}</td>
+        <td>{{ i.heavy_use }}</td>
+    </tr>
+{% endfor %}
+{% endif %}
+</tbody>
+</table>
+</body>
+</html>
