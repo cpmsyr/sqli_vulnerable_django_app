@@ -9,9 +9,13 @@ def searchparts(request):
 
 
 def parts(request):
-    searchtext = request.POST['searchText']
-    sql = ("""select * from part p where p.name='%s';""" %(searchtext))
-    dsparts = Part.objects.raw(sql)
+    if request.POST:
+        searchtext = request.POST['searchText']
+        sql = ("""select * from part p where p.name='%s';""" %(searchtext))
+        dsparts = Part.objects.raw(sql)
+    else:
+        sql = ("""select * from part;""" )
+        dsparts = Part.objects.raw(sql)
     return render(request, "partsearch.html", {'data': dsparts})
 
 
