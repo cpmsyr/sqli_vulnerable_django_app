@@ -1,3 +1,5 @@
+This is an intentionally vulnerable Django application to be used for demonstrating SQL Injection attacks against a Postgres DB. There is also commented code inside the view file showing which shows how the ORM built into Django is able to prevent the SQL injection attacks used in the vulnerable version. 
+
 #Vulnerable Database
 
 Test sql injection statements to use against the vulnerable database are:
